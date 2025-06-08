@@ -19,10 +19,10 @@ app.post('/notifica', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic LA_TUA_REST_API_KEY'
+        'Authorization': 'gjrqs2oj6ujtn2negwfcw6l4g'
       },
       body: JSON.stringify({
-        app_id: 'LA_TUA_ONESIGNAL_APP_ID',
+        app_id: '2982dd98-6671-4445-9316-252d4b356462',
         include_player_ids: [oneSignalId],
         headings: { en: titolo },
         contents: { en: messaggio }
