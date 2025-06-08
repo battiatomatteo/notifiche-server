@@ -7,9 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/notifica', async (req, res) => {
+  console.log("Richiesta ricevuta:", req.body);
   const { oneSignalId, titolo, messaggio } = req.body;
-  if (!oneSignalId) return res.status(400).send("Missing oneSignalId");
-
+  if (!oneSignalId) {
+    console.error("oneSignalId mancante!");
+    return res.status(400).send("Missing oneSignalId");
+  }
   try {
     const response = await fetch('https://onesignal.com/api/v1/notifications', {
       method: 'POST',
