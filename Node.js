@@ -13,6 +13,7 @@ app.post('/notifica', async (req, res) => {
     console.error("oneSignalId mancante!");
     return res.status(400).send("Missing oneSignalId");
   }
+
   try {
     const response = await fetch('https://onesignal.com/api/v1/notifications', {
       method: 'POST',
@@ -28,13 +29,16 @@ app.post('/notifica', async (req, res) => {
       })
     });
 
+    const responseText = await response.text();
+    console.log("Risposta OneSignal:", response.status, responseText);
+
     if (!response.ok) {
-      const errorText = await response.text();
-      return res.status(500).send("Errore OneSignal: " + errorText);
+      return res.status(500).send("Errore OneSignal: " + responseText);
     }
 
     res.status(200).send("Notifica inviata");
   } catch (error) {
+    console.error("Errore durante la chiamata a OneSignal:", error);
     res.status(500).send("Errore interno");
   }
 });
