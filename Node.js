@@ -19,7 +19,7 @@ app.post('/notifica', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'gjrqs2oj6ujtn2negwfcw6l4g'
+        'Authorization': 'Basic gjrqs2oj6ujtn2negwfcw6l4g'
       },
       body: JSON.stringify({
         app_id: '2982dd98-6671-4445-9316-252d4b356462',
