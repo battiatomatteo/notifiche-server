@@ -13,7 +13,7 @@ app.post('/notifica', async (req, res) => {
     console.error("oneSignalId mancante!");
     return res.status(400).send("Missing oneSignalId");
   }
-
+  console.log("Invio notifica a OneSignal ID:", oneSignalId);
   try {
     const response = await fetch('https://onesignal.com/api/v1/notifications', {
       method: 'POST',
@@ -30,7 +30,7 @@ app.post('/notifica', async (req, res) => {
         notification_types: 1 // Abilita le notifiche
       })
     });
-    console.log("Invio notifica a OneSignal ID:", oneSignalId);
+    
     const responseText = await response.text();
     console.log("Risposta OneSignal:", response.status, responseText);
 
