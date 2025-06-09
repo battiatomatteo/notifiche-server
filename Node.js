@@ -30,7 +30,7 @@ app.post('/notifica', async (req, res) => {
         notification_types: 1 // Abilita le notifiche
       })
     });
-
+    console.log("Invio notifica a OneSignal ID:", oneSignalId);
     const responseText = await response.text();
     console.log("Risposta OneSignal:", response.status, responseText);
 
