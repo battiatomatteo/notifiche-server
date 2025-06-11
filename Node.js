@@ -26,7 +26,7 @@ app.post('/notifica', async (req, res) => {
         app_id: '2982dd98-6671-4445-9316-252d4b356462',
         device_type: 1, // 1 per Web, 0 per iOS, 2 per Android
         //include_player_ids: [oneSignalId],
-        include_subscription_ids: [oneSignalId],
+        include_subscription_ids: [subscriptionId],
         headings: { en: titolo },
         contents: { en: messaggio },
         notification_types: 1 // Abilita le notifiche
