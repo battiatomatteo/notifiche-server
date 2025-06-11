@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post('/notifica', async (req, res) => {
   console.log("Richiesta ricevuta:", req.body);
-  const { subscriptionId, onesignalIdSubscription, titolo, messaggio } = req.body;
+  const { oneSignalId, subscriptionId, onesignalIdSubscription, titolo, messaggio } = req.body;
 
   // Usa il campo che arriva dal frontend (preferisci subscriptionId, fallback su onesignalIdSubscription)
   const subId = subscriptionId || onesignalIdSubscription;
