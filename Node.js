@@ -8,7 +8,15 @@ app.use(express.json());
 
 app.post('/notifica', async (req, res) => {
   console.log("Richiesta ricevuta:", req.body);
-  const { oneSignalId, titolo, messaggio } = req.body;
+  const { subscriptionId, onesignalIdSubscription, titolo, messaggio } = req.body;
+
+  // Usa il campo che arriva dal frontend (preferisci subscriptionId, fallback su onesignalIdSubscription)
+  const subId = subscriptionId || onesignalIdSubscription;
+
+  if (!subId) {
+    console.error("subscriptionId mancante!");
+    return res.status(400).send("Missing subscriptionId");
+  }
   if (!oneSignalId) {
     console.error("oneSignalId mancante!");
     return res.status(400).send("Missing oneSignalId");
