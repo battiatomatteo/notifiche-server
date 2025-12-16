@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post('/notifica', async (req, res) => {
   console.log("Richiesta ricevuta:", req.body);
-  const { oneSignalId, subscriptionId, onesignalIdSubscription, titolo, messaggio, send_after } = req.body;
+  const { oneSignalId, subscriptionId, onesignalIdSubscription, titolo, messaggio } = req.body;
 
   // Usa il campo che arriva dal frontend (preferisci subscriptionId, fallback su onesignalIdSubscription)
   const subId = subscriptionId || onesignalIdSubscription;
@@ -23,7 +23,8 @@ app.post('/notifica', async (req, res) => {
   }
   console.log("Invio notifica a OneSignal ID:", oneSignalId);
   try {
-    const response = await fetch('https://api.onesignal.com/notifications', {
+    const response = await fetch('https://onesignal.com/api/v1/notifications', {
+    //const response = await fetch('https://onesignal.com/api/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,11 +33,12 @@ app.post('/notifica', async (req, res) => {
       body: JSON.stringify({
         app_id: '2982dd98-6671-4445-9316-252d4b356462',
         device_type: 1, // 1 per Web, 0 per iOS, 2 per Android
-        include_subscription_ids: [subId],
+        // include_player_ids: [oneSignalId],
+        include_subscription_ids: [subscriptionId],
+        // include_subscription_ids: [onesignalIdSubscription], // <-- CAMBIATO!
         headings: { en: titolo },
         contents: { en: messaggio },
-        notification_types: 1, // Abilita le notifiche
-        ...(send_after ? { send_after } : {}) // <-- aggiunto parametro opzionale
+        notification_types: 1 // Abilita le notifiche
       })
     });
     
