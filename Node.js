@@ -23,7 +23,7 @@ app.post('/notifica', async (req, res) => {
   }
   console.log("Invio notifica a OneSignal ID:", oneSignalId);
   try {
-    const response = await fetch('https://onesignal.com/api/v1/notifications', {
+    const response = await fetch('https://api.onesignal.com/notifications', {
     //const response = await fetch('https://onesignal.com/api/v1/messages', { os_v2_app_fgbn3gdgofceleyweuwuwnlemibcjyycwyuu7kftethuacltfpd4jnkkzay5zcho63bdcjuay665pr2vneqc6b7vedv4pg7ihhuvxey
       //
       method: 'POST',
