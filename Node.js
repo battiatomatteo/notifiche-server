@@ -29,7 +29,7 @@ app.post('/notifica', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic os_v2_app_fgbn3gdgofceleyweuwuwnlemilzdoexqn5upr4jjf2tdpe7irssfltuauzu54u3tka4opzuzpscw7vpm7f57cyogodcb7vkw2wcowy'
+        'Authorization': 'Basic os_v2_app_fgbn3gdgofceleyweuwuwnlemi4o22e3rhoeyjeywiqidt2njgoxoksd2b2pd5hxgvnf7lvkmuwaxstwinhunww7ejounax72vxnziq'
       },
       body: JSON.stringify({
         app_id: '2982dd98-6671-4445-9316-252d4b356462',
